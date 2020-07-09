@@ -10,6 +10,9 @@ let package = Package(
         .library(
             name: "HLS File Generator",
             targets: ["HLS File Generator"]),
+        .executable(
+            name: "HLS File Generator CLI",
+            targets: ["HLS File Generator CLI"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -21,6 +24,9 @@ let package = Package(
         .target(
             name: "HLS File Generator",
             dependencies: []),
+        .target(
+            name: "HLS File Generator CLI",
+            dependencies: ["HLS File Generator"]),
         .testTarget(
             name: "HLS File GeneratorTests",
             dependencies: ["HLS File Generator"]),

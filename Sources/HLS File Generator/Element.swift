@@ -12,7 +12,7 @@ public protocol Elementable {
     var attribute: Attributed? { get }
 }
 
-public struct Element<Context: TagType>: Elementable, Renderable {
+public struct Element<Context>: Elementable, Renderable {
     public var name: String
     public var attribute: Attributed?
     
@@ -25,16 +25,7 @@ public struct Element<Context: TagType>: Elementable, Renderable {
     }
 }
 
-public protocol TagType { }
-
-public struct AnyTagType: TagType { }
-public struct BasicTags: TagType { }
-public struct MediaSegmentTags: TagType { }
-public struct MediaPlaylistTags: TagType { }
-public struct MasterPlaylistTags: TagType { }
-public struct MediaOrMasterPlaylistTags: TagType { }
-
-public extension Element where Context == BasicTags {
+public extension Element where Context == Playlist.BasicTags {
     static func EXTM3U() -> Element {
         Element(name: "EXTM3U", attribute: nil)
     }
@@ -44,13 +35,13 @@ public extension Element where Context == BasicTags {
     }
 }
 
-public extension Element where Context == MediaSegmentTags {
+public extension Element where Context == Playlist.MediaSegmentTags {
     static func EXTINF(duration: Float, url: String) -> Element {
         Element(name: "EXTINF", attribute: AttributeValueAndTrailingValue(value: String(duration), trailingValue: url))
     }
 }
 
-public extension Element where Context == MediaPlaylistTags {
+public extension Element where Context == Playlist.MediaPlaylistTags {
     static func EXT_X_TARGETDURATION(seconds: Int) -> Element {
         Element(name: "EXT-X-TARGETDURATION", attribute: AttributeValue(value: String(seconds)))
     }

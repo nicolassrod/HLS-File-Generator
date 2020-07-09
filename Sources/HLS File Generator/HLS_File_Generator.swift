@@ -6,6 +6,7 @@ struct HLS_File_Generator {
     static func main() {
         print("hello")
         
+//        let file = HLSDocument(elements: <#T##[Element<AnyTagType>]#>)
         let fm = FileManager.default
         let si = fm.createFile(atPath: "./nicolas.txt", contents: "nicolas".data(using: .utf8), attributes: nil)
         print(si)

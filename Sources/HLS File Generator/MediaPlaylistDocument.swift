@@ -7,8 +7,8 @@
 
 import Foundation
 
-public struct HLSDocument: Renderable {
-    public var elements: [Element<AnyTagType>]
+public struct MediaPlaylistDocument: Playlistable {
+    public var elements: [Element<Playlist.AnyTag>]
     
     public func render() -> String {
         let document = elements.map { $0.render() }
@@ -16,9 +16,3 @@ public struct HLSDocument: Renderable {
     }
 }
 
-public extension HLSDocument {
-    enum BasicTags {}
-    enum MediaPlaylistTags {}
-    enum MasterPlaylistTags {}
-    enum MediaOrMasterPlaylistTags {}
-}

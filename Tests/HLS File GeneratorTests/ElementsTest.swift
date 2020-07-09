@@ -19,8 +19,9 @@ class ElementsTest: XCTestCase {
     }
 
     func test_createElement() throws {
-        let element = Element<BasicTags>(name: "EXT-X-STREAM-INF", attribute: AttributeKeyValueAndTrailingValue(attributes: [(key: "BANDWIDTH", value: .unQuoted("1280000"))], trailingValue: "low/video-only.m3u8"))
+        let element = Element<Playlist.BasicTags>(name: "EXT-X-STREAM-INF", attribute: AttributeKeyValueAndTrailingValue(attributes: [(key: "BANDWIDTH", value: .unQuoted("1280000"))], trailingValue: "low/video-only.m3u8"))
         print(element.render())
+        
         XCTAssertEqual(element.render(), "#EXT-X-STREAM-INF:BANDWIDTH=1280000\nlow/video-only.m3u8")
         
     }
